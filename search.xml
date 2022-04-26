@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>rust_learning</title>
+    <url>/2022/04/26/rust-learning/</url>
+    <content><![CDATA[<h1 id="突发奇想"><a href="#突发奇想" class="headerlink" title="突发奇想"></a>突发奇想</h1><p>身边的大佬都身怀绝技会各种东西，之前想了很久学Rust，对这门所谓的内存安全的语言也挺感兴趣的。</p>
+<p>然而一直在摆烂，觉得不能再这样下去了，打算每天少玩一点游戏多花点时间学习，而且我觉得安全太卷了我快要搞不下去了，学点编程技术随时跑路。</p>
+<h1 id="学习路线"><a href="#学习路线" class="headerlink" title="学习路线"></a>学习路线</h1><p>对rust的应用场景还不是很清楚，目前可能先学习常见的语法，然后做做leetcode算法题，认识的大佬会出rust的ctf赛题，或许某天我也整点活。</p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p>照这个配了一个调试环境<a href="https://www.runoob.com/rust/rust-println.html">菜鸟教程</a></p>
+<p><a href="https://www.rust-lang.org/zh-CN">官方网站</a></p>
+<p><a href="https://doc.rust-lang.org/book/">官方文档</a></p>
+<p><a href="https://doc.rust-lang.org/stable/rust-by-example/">官方示例</a></p>
+]]></content>
+      <categories>
+        <category>programming</category>
+      </categories>
+      <tags>
+        <tag>rust</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>DLink路由器命令注入漏洞复现</title>
     <url>/2022/04/15/DLink%E8%B7%AF%E7%94%B1%E5%99%A8%E5%91%BD%E4%BB%A4%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</url>
     <content><![CDATA[<p>本科课程的大作业，当时写的博客。</p>
