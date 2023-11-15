@@ -190,6 +190,90 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/11/15/android-pixel5-flash-and-root/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="payoung">
+      <meta itemprop="description" content="ctfer, pwner, programmer">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="payoung's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/11/15/android-pixel5-flash-and-root/" class="post-title-link" itemprop="url">android_pixel5_flash_and_root</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-11-15 13:50:35 / 修改时间：14:35:45" itemprop="dateCreated datePublished" datetime="2023-11-15T13:50:35+08:00">2023-11-15</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index"><span itemprop="name">android</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>实习期间用部门同事借的pixel3作为调试机器在折腾，离职后现在没设备了，最近双11爆大米买了台pixel5来当调试机，先刷机和拿root。<br><a target="_blank" rel="noopener" href="https://developers.google.com/android/images">谷歌官方镜像</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/598414059">刷机博客</a></p>
+<h1 id="刷官方内核镜像"><a href="#刷官方内核镜像" class="headerlink" title="刷官方内核镜像"></a>刷官方内核镜像</h1><p>手机上的操作会专门说明，否则就在电脑上操作。</p>
+<ol>
+<li>手机上在设置当中进行系统更新，保证更新至最新版本（其实这一步可以看自己需求），然后去官方镜像网站找对应版本，按理来说其实应该也可以随便任意一版本。</li>
+<li>PC上装android命令行工具，主要是adb和fastboot，windows要需要安装对应驱动，mac和linux不需要。</li>
+<li><code>adb reboot bootloader</code>进入bootloader中，因为是新买的设备bl锁没解，需要多一步<code>fastboot flashing unlock</code>解锁，这里被坑了，一开始查的资料都是说<code>fastboot oem unlock</code>，去谷歌官方镜像网站那里才发现新版命令已经变了。</li>
+<li>很奇怪的一点，解完bl锁手机跟恢复出厂了一样，之前push过去的东西还有装的app全没了，没办法手机上又需要重新安装一遍。</li>
+<li>同样用adb进bootloader，然后用官方压缩包中<code>flash-all.sh</code>脚本刷机（可以看看脚本用了哪些命令）。</li>
+<li>flash-all.sh执行出现报错，<code>fastboot: error: ANDROID_PRODUCT_OUT not set</code>，查了一下需要这个环境变量，自己设置一下，重新刷一遍即可。<br><img src="/2023/11/15/android-pixel5-flash-and-root/1.png" alt="缺某个环境变量"></li>
+</ol>
+<h1 id="刷magisk镜像拿root"><a href="#刷magisk镜像拿root" class="headerlink" title="刷magisk镜像拿root"></a>刷magisk镜像拿root</h1><ol>
+<li>在手机上装magisk软件。</li>
+<li>解压<code>image-redfin-up1a.231105.001.zip</code>，获取其中<code>boot.img</code>镜像，然后push到手机上。</li>
+<li>在手机上用magisk给镜像打patch，然后拉回电脑。</li>
+<li>和刷官方镜像类似，也是先进bootloader，但是这次只刷boot，<code>fastboot flash boot ./magisk_patched-26400_DIOwo.img</code>。<br><img src="/2023/11/15/android-pixel5-flash-and-root/2.png" alt="刷magisk镜像"></li>
+<li>手机重启，然后进magisk确认一下，后续就可以用root了。<br><img src="/2023/11/15/android-pixel5-flash-and-root/3.png" alt="测试root"></li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2023/11/14/payoung-security-wiki/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -891,20 +975,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
